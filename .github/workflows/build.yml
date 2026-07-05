@@ -1,0 +1,61 @@
+name: Build
+
+on:
+  push:
+    paths:
+      - "**.cs"
+      - "**.csproj"
+      - "**.shproj"
+      - "**.slnx"
+      - "**.projitems"
+      - ".github/workflows/build.yml"
+  pull_request:
+    paths:
+      - "**.cs"
+      - "**.csproj"
+      - "**.shproj"
+      - "**.slnx"
+      - "**.projitems"
+      - ".github/workflows/build.yml"
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        target: [PCDX, PCGL]
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore
+        run: dotnet restore Lawn_${{ matrix.target }}/Lawn_${{ matrix.target }}.csproj
+
+      - name: Build ${{ matrix.target }}
+        run: dotnet build Lawn_${{ matrix.target }}/Lawn_${{ matrix.target }}.csproj -c Release --no-restore
+
+      - name: Upload ${{ matrix.target }} artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Lawn-${{ matrix.target }}
+          path: Lawn_${{ matrix.target }}/bin/Release/net10.0*/**
+
+  build-all-solution:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore solution
+        run: dotnet restore Lawn.slnx
+
+      - name: Build IronPyInteractiveClient_WPF
+        run: dotnet build IronPyInteractiveClient_WPF/IronPyInteractiveClient_WPF.csproj -c Release --no-restore
