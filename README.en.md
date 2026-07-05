@@ -1,6 +1,6 @@
 # PlantsVsZombies.net
 
-[中文版本](./README.md)
+[中文版本](./README.md) | [Versión en Español](./README.es.md)
 
 [Wiki(Chinese)](https://github.com/Mewnojs/PlantsVsZombies.NET/wiki)
 
