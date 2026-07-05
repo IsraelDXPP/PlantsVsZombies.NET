@@ -22,7 +22,7 @@
 	</ItemGroup>
 	<!--游戏资源自动复制-->
 	<ItemGroup>
-		<None Include="$(ProjectDir)Content\**" CopyToOutputDirectory="PreserveNewest" />
+		<None Include="$(MSBuildProjectDirectory)\..\Content\**" Link="Content\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="FontStashSharp.MonoGame" Version="1.3.6" />
@@ -53,7 +53,7 @@
 		</EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
-		<None Include="$(ProjectDir)Content\**" CopyToOutputDirectory="PreserveNewest" />
+		<None Include="$(MSBuildProjectDirectory)\..\Content\**" Link="Content\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
 		<None Include="$(ProjectDir)Icon.bmp" CopyToOutputDirectory="PreserveNewest" />
 	</ItemGroup>
 	<Import Project="..\Lawn_Shared\Lawn_Shared.projitems" Label="Shared" />
