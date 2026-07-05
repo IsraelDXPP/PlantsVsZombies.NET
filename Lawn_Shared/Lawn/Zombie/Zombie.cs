@@ -5595,6 +5595,11 @@ namespace Lawn
             {
                 StartWalkAnim(0);
             }
+            if (reanimation.TrackExists(GlobalMembersReanimIds.ReanimTrackId_anim_head1))
+            {
+                ReanimatorTrackInstance headTrack = reanimation.GetTrackInstanceByName(GlobalMembersReanimIds.ReanimTrackId_anim_head1);
+                headTrack.mShakeY = -10f;
+            }
             return reanimation;
         }
 

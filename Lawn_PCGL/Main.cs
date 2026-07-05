@@ -646,8 +646,7 @@ namespace Sexy
             //if ((Main.graphics.GraphicsDevice.PresentationParameters.BackBufferWidth == 480 && Main.graphics.GraphicsDevice.PresentationParameters.BackBufferHeight == 800) || (Main.graphics.GraphicsDevice.PresentationParameters.BackBufferWidth == 800 && Main.graphics.GraphicsDevice.PresentationParameters.BackBufferHeight == 480))
             //{
             AtlasResources.mAtlasResources = new AtlasResources_480x800();
-                Constants.Load600x1000();
-                Constants.ImageSubPath = "\\480x800\\";
+                Constants.Load480x800();
                 return;
             //}
             throw new Exception("Unsupported Resolution");
