@@ -149,7 +149,8 @@ namespace Sexy
             else
             {
                 LawnMod.IronPyInteractive.PyHub.Initialize(false);
-            }   
+            }
+            AudioCrashFix.Apply();
 #endif
             base.Initialize();
             // Window Scaling

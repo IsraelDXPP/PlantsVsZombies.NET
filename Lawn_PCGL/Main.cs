@@ -201,6 +201,7 @@ namespace Sexy
             {
                 LawnMod.IronPyInteractive.PyHub.Initialize(false);
             }
+            AudioCrashFix.Apply();
 #endif
             base.Initialize();
             // Window initialization
